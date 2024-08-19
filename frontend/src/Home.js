@@ -1,8 +1,9 @@
-import './App.css';
-import Header from './Header';
+import './css/App.css';
+import Header from './components/Header';
 import SelectedCourses from './SelectedCourses';
 import AvailableCourses from './AvailableCourses';
 import { useEffect, useState, } from 'react';
+import Playlists from './components/Playlists';
 
 
 
@@ -42,21 +43,16 @@ function Home() {
   return (
    
     <div className='container'>
-      <Header />
-      <div className='text-center error'>{error}</div>
-      <div className='content'>
-        
-        <AvailableCourses courses={courses} selected={selected} onSelect={setSelected}/>
-        <div className='button-column'>
-          <button onClick={()=>addCourse(courses.at(selected))}>Add</button>
-          
-          <button onClick={()=>removeCourse(chosenSelected)}>Remove</button>
-        </div>
-        
-        <SelectedCourses courses={chosenCourses} selected={chosenSelected} onSelect={chosenSetSelected}/>
-
+      <div className='row'>
+      <div className='sidebar'>
+        <Header/>
+        <Playlists/>
       </div>
+      <div className='songs'></div>
+      </div>
+      <div className='player'></div>
     </div>
+    
    
   );
 }

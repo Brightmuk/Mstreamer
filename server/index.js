@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
             { 'name': 'Mobile Development', 'credits': 11 },
             { 'name': 'Database Design', 'creditss': 10 },
             { 'name': 'Data Structures & Algorithims', 'credits': 13 },
-            { 'name': 'Computer Graphics', 'credits': 17 },
-            { 'name': 'Advanced Programming', 'credits': 10 }
+            // { 'name': 'Computer Graphics', 'credits': 17 },
+            // { 'name': 'Advanced Programming', 'credits': 10 }
         ]
     });
 });

@@ -1,0 +1,13 @@
+.header {
+    height: 25vh;
+    width: 25vw;
+    margin:10px;
+    border: 1px solid rgb(34, 34, 34);
+    border-radius: 10px;
+    overflow-y: scroll;
+    background-color: rgb(14, 14, 19);
+    padding: 20px;
+}
+.header h3{
+    
+}

@@ -1,6 +1,5 @@
-import './App.css';
+import './css/App.css';
 import Home from './Home';
-import About from './About';
 import { createContext, useEffect, useState } from 'react';
 import LoginForm from './Login';
 import Cookies from 'js-cookie';
