@@ -45,8 +45,23 @@
     display: flex;
     opacity: 0.9;
     margin-top: 20px;
-   
-
+}
+.playlist-info .play-playlist{
+    background-color: purple;
+    border: none;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-left: 10px;
+}
+.playlist-info .play-playlist img{
+    width: 15px;
 }
 
 .songs-header .playlist-info .playlist-info-right {
@@ -54,7 +69,7 @@
     margin-left: 10px;
 }
 
-.songs-header .playlist-info img {
+.songs-header .playlist-info .album-img {
     width: 150px;
     height: 150px;
     border-radius: 10px;
@@ -78,9 +93,11 @@
 
     color: rgb(201, 201, 201);
 }
+
 .song-list{
     margin-top: 220px;
 }
+
 
 .song-card {
     display: flex;
@@ -97,13 +114,21 @@
     width: 50px;
     height: 50px;
     border-radius: 5px;
-
 }
 
 .song-card .card-left {
+    
+    display: flex;
+    align-items: center;
+}
+.card-left-leading{
+    
+ width: 30px;
+ color: rgb(125, 93, 125);
+}
+.card-left-trailing{
     position: relative;
     width: max-content;
-
 }
 
 .song-card .card-left .play-icon {

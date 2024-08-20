@@ -26,19 +26,20 @@ function Songs() {
 
                 </div>
                 <div className='playlist-info'>
-                    <img src={`${process.env.PUBLIC_URL}/images/playlists/cover6.jpg`}></img>
+                    <img className='album-img' src={`${process.env.PUBLIC_URL}/images/playlists/cover6.jpg`}></img>
                     <div className='playlist-info-right'>
                         <small>Playlist</small>
                         <h1> Important Radio</h1>
                         <p>by Amichael Genre, Dj Homu</p>
                         <small>50 songs, 2hrs 30 min</small>
                     </div>
+                    
+                    <div className='play-playlist'><img src={`${process.env.PUBLIC_URL}/images/icons/play.png`}></img></div>
+                
                 </div>
             </div>
             <div className='songs-content'>
-                <div className='songs-content-header'>
-
-                </div>
+                
                 <div className='song-list'> 
                   <ItemList songs={songs} selected={()=>console.log('selected')}/>
                 </div>
@@ -53,8 +54,14 @@ function ItemList(props){
             <div key={index} className={props.selected === index ? "selected-song-card" : "song-card"}
                 onClick={() => props.onSelect(index)}>
                     <div className='card-left'>
-                    <img src={`${process.env.PUBLIC_URL}${song.img}`} alt="img" />
-                    <img className='play-icon' src={`${process.env.PUBLIC_URL}/images/icons/play.png`} alt="img" />
+                        
+                        <div className='card-left-leading'>{index+1}</div>
+                        <div className='card-left-trailing'>
+                        <img src={`${process.env.PUBLIC_URL}${song.img}`} alt="img" />
+                        <img className='play-icon' src={`${process.env.PUBLIC_URL}/images/icons/play.png`} alt="img" />
+                        </div>
+                    
+                    
                     </div>
                     <div className='card-right'>
                         <div className='card-right-leading'>

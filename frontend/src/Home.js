@@ -1,29 +1,28 @@
 import './css/App.css';
 import Header from './components/Header';
-import SelectedCourses from './SelectedCourses';
-import AvailableCourses from './AvailableCourses';
-import { useEffect, useState, } from 'react';
+import { createContext, useEffect, useState, } from 'react';
 import Playlists from './components/Playlists';
 import Player from './components/Player';
 import Songs from './components/Songs';
+import AppContext from './state';
 
 
 
 function Home() {
-  const [selected, setSelected] = useState();
-  const [courses,setCourses] = useState([]);
 
-  const [chosenSelected, chosenSetSelected] = useState();
-  const [chosenCourses, setChosenCourses] = useState([]);
-
-  const [error,setError] = useState();
-
-  const addCourse = (course) => {
-    setChosenCourses([...chosenCourses, course]);
+  const [appState, setAppState] = useState({
+    playing: false,
+    currentTab: 'home',
+    currentSong: {},
+    currentPlaylist:{}
+  });
+  const updateState = (newState) => {
+    setAppState((prevState) => ({
+      ...prevState,
+      ...newState,
+    }));
   };
-  const removeCourse = (indexToRemove) => {
-    setChosenCourses(chosenCourses.filter((_, index) => index !== indexToRemove));
-  };
+
   useEffect(()=>{
     fetch('http://localhost:4000/')
     .then(response=>response.json())
@@ -31,19 +30,18 @@ function Home() {
         
         if(result.type==='success'){
             console.log('good good')
-            setCourses(result.data);
+            
         }else{ 
             console.log(result)
-            setError(result.error)
-            setCourses([]);
+            
         }
     })
-    .catch(error =>setError(error))
+    .catch(error =>console.error(error))
   },[])
 
   
   return (
-   
+   <AppContext.Provider value = {{appState, updateState}}>
     <div className='container'>
       <div className='row'>
       <div className='sidebar'>
@@ -54,9 +52,10 @@ function Home() {
       </div>
       <Player/>
     </div>
-    
+    </AppContext.Provider>
    
   );
 }
 
 export default Home;
+
