@@ -34,6 +34,9 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+.selected{
+    background-color: rgb(40, 13, 40);
+}
 .playlist-card:hover{
     background-color: rgb(31, 25, 34);
 }

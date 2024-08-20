@@ -14,7 +14,7 @@ function Home() {
     playing: false,
     currentTab: 'home',
     currentSong: {},
-    currentPlaylist:{}
+    currentPlaylist: {'name':'Love songs','img':'/images/playlists/cover1.jpg'}
   });
   const updateState = (newState) => {
     setAppState((prevState) => ({
