@@ -1,9 +1,10 @@
  .playlists {
-    height: 57vh;
+    height: 69vh;
     width: 25vw;
     margin:10px;
+    padding-bottom: 0px;
     border: 1px solid rgb(33, 33, 33);
-    background-color: rgb(14, 14, 19);
+    background-color: rgb(18, 14, 19);
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -17,13 +18,14 @@
     margin-top: 80px;
 }
 .playlists .head{
+    z-index: 1000;
     position: absolute;
-    width: 23.4vw;
+    width: 23.7vw;
     padding: 10px;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    background-color: rgb(14, 14, 19);
+    background-color: rgb(18, 14, 19);
 }
 .playlist-card{
     border-bottom: 1px solid rgb(26, 26, 26);
@@ -33,7 +35,7 @@
     padding-right: 10px;
 }
 .playlist-card:hover{
-    background-color: rgb(16, 22, 16);
+    background-color: rgb(31, 25, 34);
 }
 
 .playlist-card img{
@@ -45,16 +47,18 @@
 .playlist-card .card-left{
     position: relative; 
     width: max-content;
+    
 }
 .playlist-card .card-left .play-icon{
   position: absolute; 
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
-  width: 30px; 
-  height: 30px; 
+  width: 20px; 
+  height: 25px; 
   pointer-events: none; 
   opacity: 0; 
+  cursor:pointer;
   transition: opacity 0.3s ease;
 }
 .playlist-card:hover  .play-icon{

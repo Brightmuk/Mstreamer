@@ -9,7 +9,7 @@ function Playlists(){
             <h3>Playlists</h3>
             </div>
             <div className='content'>
-            <ItemList playlists = {[{'name':'Love songs','img':'/images/playlists/cover1.jpg'},{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'},{'name':'Love songs','img':'/images/playlists/cover1.jpg'},{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'}]} onSelect = {(index)=>console.log('Playlist '+index +' selected')}/>
+            <ItemList playlists = {[{'name':'Love songs','img':'/images/playlists/cover1.jpg'},{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'},{'name':'Love songs','img':'/images/playlists/cover1.jpg'},{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},]} onSelect = {(index)=>console.log('Playlist '+index +' selected')}/>
             </div>
            
         </div>
