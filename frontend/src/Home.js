@@ -5,6 +5,7 @@ import AvailableCourses from './AvailableCourses';
 import { useEffect, useState, } from 'react';
 import Playlists from './components/Playlists';
 import Player from './components/Player';
+import Songs from './components/Songs';
 
 
 
@@ -49,7 +50,7 @@ function Home() {
         <Header/>
         <Playlists/>
       </div>
-      <div className='songs'></div>
+      <Songs/>
       </div>
       <Player/>
     </div>

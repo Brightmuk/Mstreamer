@@ -7,11 +7,11 @@
     border-top: 1px solid rgb(33, 33, 33);
     background-color: rgb(17, 11, 21);
     justify-content: space-between;
-    width: 98%;
+    width: 98.6%;
     
 }
 .player .player-left{
-   
+   width: 20vw;
     display: flex;
 }
 .player .player-left img{
@@ -31,7 +31,7 @@
     color: rgb(92, 92, 92);
 }
 .player-center{
-    width: 30vw;
+    width: 35vw;
    
 }
 .player-center .progress-bar {
