@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import '../css/App.css';
 import '../css/Songs.css';
+import AppContext from '../state';
 
 function Songs() {
+    const {appState, updateState} = useContext(AppContext);
+
     const songs = [
     { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover1.jpg' },
     { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover3.jpeg' },
@@ -20,16 +24,16 @@ function Songs() {
     return (
         <div className="songs">
             <div className='songs-header'>
-            <div className='background-overlay' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/playlists/cover6.jpg)`}}></div>
+            <div className='background-overlay' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${appState.currentPlaylist.img})`}}></div>
             <div className='blur-overlay'></div>
                 <div className='nav'>
 
                 </div>
                 <div className='playlist-info'>
-                    <img className='album-img' src={`${process.env.PUBLIC_URL}/images/playlists/cover6.jpg`}></img>
+                    <img className='album-img' src={`${process.env.PUBLIC_URL}${appState.currentPlaylist.img}`}></img>
                     <div className='playlist-info-right'>
                         <small>Playlist</small>
-                        <h1> Important Radio</h1>
+                        <h1> {appState.currentPlaylist.name}</h1>
                         <p>by Amichael Genre, Dj Homu</p>
                         <small>50 songs, 2hrs 30 min</small>
                     </div>
@@ -70,7 +74,7 @@ function ItemList(props){
                         </div>
                         <div className='card-right-trailing'>
                             <p>{song.album}</p>
-                            <p>{song.duration}</p>
+                            <h5>{song.duration}</h5>
                         </div>
                     
                     </div>

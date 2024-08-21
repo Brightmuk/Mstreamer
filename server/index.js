@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
 const corsOptions = {
@@ -7,19 +8,16 @@ const corsOptions = {
     optionsSuccessStatus:200
 }
 app.use(cors(corsOptions));
+app.use('/songs', express.static(path.join(__dirname, 'audio')));
 
-app.get('/', (req, res) => {
+app.get('/songs', (req, res) => {
     res.json({
         'type': 'success',
         'data': [
-            { 'name': 'Calculus III', 'credits': 20 },
-            { 'name': 'Embedded Systems', 'credits': 15 },
-            { 'name': 'Web Development', 'credits': 19 },
-            { 'name': 'Mobile Development', 'credits': 11 },
-            { 'name': 'Database Design', 'creditss': 10 },
-            { 'name': 'Data Structures & Algorithims', 'credits': 13 },
-            // { 'name': 'Computer Graphics', 'credits': 17 },
-            // { 'name': 'Advanced Programming', 'credits': 10 }
+            {'id':'001', 'name': 'Jireh Provider', 'by': 'Limoblaze, Lecrae','audio':'http://localhost:4000/songs/jireh_provider/audio.mp3','img':'http://localhost:4000/songs/jireh_provider/art.jpg' },
+            {'id':'002', 'name': 'LIKE YOU', 'by': 'Aaron Cole ft Tauren wells & TobyMac','audio':'http://localhost:4000/songs/more_like_you/audio.mp3','img':'http://localhost:4000/songs/more_like_you/art.jpg' },
+
+          
         ]
     });
 });

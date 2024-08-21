@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../state';
 
 function Playlists(){
-    const playlists = [{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'},{'name':'Love songs','img':'/images/playlists/cover1.jpg'},{'name':'Worship Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},{'name':'Amapiano','img':'/images/playlists/cover3.jpeg'},{'name':'Sleep','img':'/images/playlists/cover7.jpeg'},];
+    const playlists = [{'name':'Worship Songs','img':'/images/playlists/cover0.jpg'},{'name':'Sleep','img':'/images/playlists/cover1.jpg'},{'name':'Amapiano','img':'/images/playlists/cover2.jpg'},{'name':'Love songs','img':'/images/playlists/cover3.jpeg'},{'name':'Travel Songs','img':'/images/playlists/cover5.jpeg'},{'name':'Vibing chills','img':'/images/playlists/cover6.jpg'},{'name':'Praise songs','img':'/images/playlists/cover7.jpeg'},{'name':'Rap songs','img':'/images/playlists/cover8.jpg'},];
    
 
     return (

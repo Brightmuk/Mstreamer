@@ -10,10 +10,13 @@
 .header img{
     width: 20px;
     margin-right: 10px;
-   
 }
-.header h3{
-    color: rgb(251, 208, 251);
+.header h2{
+    margin-bottom: 10px;
+}
+
+.unselected{
+    color:rgb(166, 147, 169)
 }
 .header h4{
     padding: 10px;
