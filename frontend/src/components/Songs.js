@@ -1,31 +1,34 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import '../css/App.css';
 import '../css/Songs.css';
 import AppContext from '../state';
 
 function Songs() {
-    const {appState, updateState} = useContext(AppContext);
+    const { appState, updateState } = useContext(AppContext);
 
-    const songs = [
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover1.jpg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover3.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover5.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover6.jpg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover7.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover1.jpg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover3.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover7.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover7.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover1.jpg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover3.jpeg' },
-    { 'name': 'Important', 'artist': 'Marizu', 'album': 'Important', 'duration': '2:44', 'img': '/images/playlists/cover7.jpeg' },
-    ]
+    const [songs, setSongs] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/songs/')
+            .then(response => response.json())
+            .then(result => {
+
+                if (result.type === 'success') {
+                    console.log('good good')
+                    setSongs(result.data)
+                } else {
+                    console.log(result)
+
+                }
+            })
+            .catch(error => console.error(error))
+    }, [])
 
     return (
         <div className="songs">
             <div className='songs-header'>
-            <div className='background-overlay' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${appState.currentPlaylist.img})`}}></div>
-            <div className='blur-overlay'></div>
+                <div className='background-overlay' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${appState.currentPlaylist.img})` }}></div>
+                <div className='blur-overlay'></div>
                 <div className='nav'>
 
                 </div>
@@ -37,52 +40,64 @@ function Songs() {
                         <p>by Amichael Genre, Dj Homu</p>
                         <small>50 songs, 2hrs 30 min</small>
                     </div>
-                    
+
                     <div className='play-playlist'><img src={`${process.env.PUBLIC_URL}/images/icons/play.png`}></img></div>
-                
+
                 </div>
             </div>
             <div className='songs-content'>
-                
-                <div className='song-list'> 
-                  <ItemList songs={songs} selected={()=>console.log('selected')}/>
+
+                <div className='song-list'>
+                    <ItemList songs={songs} selected={() => console.log('selected')} />
                 </div>
             </div>
         </div>
     )
 }
-function ItemList(props){
+function ItemList(props) {
+    const { appState, updateState } = useContext(AppContext);
+    const audioRef = useRef(null);
+    
+  const playAudio = (song) => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      updateState({playing:true, currentSong: song});
+    }
+  };
+
     return (
         <div>
-        {props.songs.map((song, index) => (
-            <div key={index} className={props.selected === index ? "selected-song-card" : "song-card"}
-                onClick={() => props.onSelect(index)}>
+            {props.songs.map((song, index) => (
+                <div key={index} className={props.selected === index ? "selected-song-card" : "song-card"}
+                    onClick={() => playAudio(song)}>
                     <div className='card-left'>
-                        
-                        <div className='card-left-leading'>{index+1}</div>
+
+                        <div className='card-left-leading'>{index + 1}</div>
                         <div className='card-left-trailing'>
-                        <img src={`${process.env.PUBLIC_URL}${song.img}`} alt="img" />
-                        <img className='play-icon' src={`${process.env.PUBLIC_URL}/images/icons/play.png`} alt="img" />
+                            <img src={song.img} alt="img" />
+                            <img className='play-icon' src={`${process.env.PUBLIC_URL}/images/icons/play.png`} alt="img" />
                         </div>
-                    
-                    
+                        <audio ref={audioRef} >
+                        <source  src={song.audio} type="audio/mp3" />
+                        </audio>
+
                     </div>
                     <div className='card-right'>
                         <div className='card-right-leading'>
-                        <p>{song.name} </p>
-                        <small>{song.artist}</small>
+                            <p>{song.name} </p>
+                            <small>{song.by}</small>
                         </div>
                         <div className='card-right-trailing'>
                             <p>{song.album}</p>
                             <h5>{song.duration}</h5>
                         </div>
-                    
+
                     </div>
-                
-                
-            </div>
-        ))}
-    </div>
+
+
+                </div>
+            ))}
+        </div>
     )
 }
 

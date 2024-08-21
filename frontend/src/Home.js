@@ -24,7 +24,7 @@ function Home() {
   };
 
   useEffect(()=>{
-    fetch('http://localhost:4000/')
+    fetch('http://localhost:4000/songs/')
     .then(response=>response.json())
     .then(result=> {
         

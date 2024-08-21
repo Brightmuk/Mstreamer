@@ -108,6 +108,7 @@
 }
 .song-card:hover{
     background-color: rgb(33, 24, 33);
+    cursor: pointer;
 }
 
 .song-card img {
