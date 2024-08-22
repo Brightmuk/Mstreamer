@@ -8,7 +8,10 @@
     background-color: rgb(17, 11, 21);
     justify-content: space-between;
     width: 98.6%;
-    
+    transition: 0.3s ease;
+}
+.no-song{
+    opacity:0
 }
 .player .player-left{
    width: 20vw;

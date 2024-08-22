@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState} from 'react';
 import '../css/App.css';
 import '../css/Songs.css';
 import AppContext from '../state';
 
-function Songs() {
+function Songs(props) {
     const { appState, updateState } = useContext(AppContext);
 
     const [songs, setSongs] = useState([]);
@@ -56,20 +56,13 @@ function Songs() {
 }
 function ItemList(props) {
     const { appState, updateState } = useContext(AppContext);
-    const audioRef = useRef(null);
-    
-  const playAudio = (song) => {
-    if (audioRef.current) {
-      audioRef.current.play();
-      updateState({playing:true, currentSong: song});
-    }
-  };
+
 
     return (
         <div>
             {props.songs.map((song, index) => (
                 <div key={index} className={props.selected === index ? "selected-song-card" : "song-card"}
-                    onClick={() => playAudio(song)}>
+                    onClick={() => updateState({currentSong: song})}>
                     <div className='card-left'>
 
                         <div className='card-left-leading'>{index + 1}</div>
@@ -77,9 +70,6 @@ function ItemList(props) {
                             <img src={song.img} alt="img" />
                             <img className='play-icon' src={`${process.env.PUBLIC_URL}/images/icons/play.png`} alt="img" />
                         </div>
-                        <audio ref={audioRef} >
-                        <source  src={song.audio} type="audio/mp3" />
-                        </audio>
 
                     </div>
                     <div className='card-right'>

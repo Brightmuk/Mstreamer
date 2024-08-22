@@ -1,6 +1,6 @@
 import './css/App.css';
 import Header from './components/Header';
-import { createContext, useEffect, useState, } from 'react';
+import { createContext, useEffect, useRef, useState, } from 'react';
 import Playlists from './components/Playlists';
 import Player from './components/Player';
 import Songs from './components/Songs';
@@ -23,21 +23,8 @@ function Home() {
     }));
   };
 
-  useEffect(()=>{
-    fetch('http://localhost:4000/songs/')
-    .then(response=>response.json())
-    .then(result=> {
-        
-        if(result.type==='success'){
-            console.log('good good')
-            
-        }else{ 
-            console.log(result)
-            
-        }
-    })
-    .catch(error =>console.error(error))
-  },[])
+
+
 
   
   return (
