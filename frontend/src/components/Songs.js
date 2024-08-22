@@ -48,7 +48,7 @@ function Songs(props) {
             <div className='songs-content'>
 
                 <div className='song-list'>
-                    <ItemList songs={songs} selected={() => console.log('selected')} />
+                    <ItemList songs={songs} />
                 </div>
             </div>
         </div>
@@ -56,13 +56,18 @@ function Songs(props) {
 }
 function ItemList(props) {
     const { appState, updateState } = useContext(AppContext);
+    const [selected, setSelected] = useState();
 
+    const selectSong = (song,index)=>{
+        setSelected(index);
+        updateState({currentSong: song,playing:true});
+    }
 
     return (
         <div>
             {props.songs.map((song, index) => (
-                <div key={index} className={props.selected === index ? "selected-song-card" : "song-card"}
-                    onClick={() => updateState({currentSong: song})}>
+                <div key={index} className={selected === index ? "selected song-card" : "song-card"}
+                    onClick={() => selectSong(song,index)}>
                     <div className='card-left'>
 
                         <div className='card-left-leading'>{index + 1}</div>

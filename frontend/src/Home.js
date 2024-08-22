@@ -23,9 +23,6 @@ function Home() {
     }));
   };
 
-
-
-
   
   return (
    <AppContext.Provider value = {{appState, updateState}}>
