@@ -7,14 +7,16 @@ function Songs(props) {
     const { appState, updateState } = useContext(AppContext);
 
     const [songs, setSongs] = useState([]);
+    
 
     useEffect(() => {
-        fetch('http://localhost:4000/songs/')
+        
+        fetch(process.env.REACT_APP_BASE_URL+'/songs')
             .then(response => response.json())
             .then(result => {
 
                 if (result.type === 'success') {
-                    console.log('good good')
+                   
                     setSongs(result.data)
                 } else {
                     console.log(result)
